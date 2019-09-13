@@ -1,0 +1,132 @@
+
+body {
+margin : 0;
+padding : 0;
+font : 73% "lucida sans", "Trebuchet MS", verdana, tahoma, arial, sans-serif;
+line-height : 1.7em;
+background : #333 url(images/bgd.jpg) no-repeat;
+color : #eee;
+}
+a:link, a:visited, a:active {
+color : #9BBA7F;
+background : inherit;
+}
+a:hover {
+color : #7A7B75;
+background : inherit;
+}
+h1 {
+margin : 0;
+padding : 20px;
+font-size : 130%;
+color : #adae75;
+background : inherit;
+}
+#content h2 {
+padding : 10px 0 10px 30px;
+margin : 0;
+font-size : 120%;
+text-transform : uppercase;
+color : #adae75;
+background : inherit;
+}
+#container {
+width : 750px;
+margin-left : 0;
+margin-right : auto;
+color : #d6ddbc;
+background : inherit;
+}
+#header {
+width : 750px;
+height : 172px;
+border-bottom : 0 solid #ccc;
+background : transparent url(images/head.jpg) no-repeat;
+margin-bottom : 0;
+}
+#title {
+width : 750px;
+height : 50px;
+margin-bottom : 10px;
+background : transparent url(images/title.jpg) no-repeat;
+}
+#title p {
+text-align : center;
+text-transform : uppercase;
+letter-spacing : 5px;
+color : #adae75;
+background : inherit;
+font-size : 130%;
+padding : 20px 0 20px 0;
+}
+#leftcol {
+width : 260px;
+float : right;
+padding : 5px 0 5px 0;
+}
+#leftcol p {
+padding : 5px 20px 5px 20px;
+margin : 0;
+}
+#leftcol h2 {
+padding : 10px 0 10px 20px;
+margin : 0;
+font-size : 120%;
+text-transform : uppercase;
+color : #adae75;
+background : inherit;
+}
+#leftcol ol, ul {
+font-size : 90%;
+color : #7A7B75;
+background : inherit;
+}
+#content {
+margin-right : 0;
+width : 460px;
+}
+#content p {
+padding : 5px 20px 5px 30px;
+margin : 0;
+}
+#footer {
+width : 750px;
+height : 50px;
+clear : right;
+border-top : 1px solid #666;
+background : inherit;
+color : #eee;
+padding : 5px 0 5px 0;
+}
+#footer p {
+text-align : left;
+padding-left : 25px;
+font-size : 0.9em;
+}
+#navcontainer {
+width : 200px;
+margin-left : 20px;
+padding-bottom : 20px;
+}
+#navcontainer ul {
+margin-left : 0;
+padding-left : 0;
+list-style-type : none;
+}
+#navcontainer a {
+display : block;
+padding : 3px;
+width : 160px;
+background-color : #333;
+color : #adae75;
+border-bottom : 1px solid #adae75;
+}
+#navcontainer a:link, #navlist a:visited {
+background : inherit;
+color : #adae75;
+text-decoration : none;
+}
+#navcontainer a:hover {
+background-color : #424a33;
+color : #d6ddbc;
+}
