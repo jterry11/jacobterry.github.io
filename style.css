@@ -1,7 +1,7 @@
 
 body {
-margin : 0;
-padding : 0;
+margin : 350 position: absolute;
+padding : 20; position: absolute;
 font : 73% "lucida sans", "Trebuchet MS", verdana, tahoma, arial, sans-serif;
 line-height : 1.7em;
 background : #333 url(images/bgd.jpg) no-repeat;
