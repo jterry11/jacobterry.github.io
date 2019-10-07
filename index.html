@@ -1,48 +1,69 @@
 <?php
 
-$host="localhost";
-$port=3306;
-$socket="";
-$user="root";
-$password="";
-$dbname="university";
-
-$con = new mysqli($host, $user, $password, $dbname, $port, $socket)
-	or die ('Could not connect to the database server' . mysqli_connect_error());
-
-  echo 'Connected to the database.<br>';
-
-$output = '';
-
-if (isset ($_POST ['search']))   {
-      $searchq = $_POST ['search'];
-      $searchq = preg_replace("#[^0-9a-z]#i", "", $searchq);
-
-$query = mysql_query ("SELECT * FROM student WHERE firstname LIKE '%searchq%' OR lastname LIKE '%searchq%'") or die("Could not Search");
-$count = mysql_num_rows ($query);
-if ($count == 0) {
-      $ouput = 'There was no search result';
-}else {
-while ($row = mysql_fetch_array ($query)) {
-   $fname = $row ['firstname'];
-   $lname = $row ['lastname'];
-   $id = $row ['id'];
-
-$output .='<div> '.$fname.' '.$lname.'</div>';
-
-       }
-   } 
+if(isset($_POST['search']))
+{
+    $valueToSearch = $_POST['valueToSearch'];
+    // search in all table columns
+    // using concat mysql function
+    $query = "SELECT * FROM `student` WHERE CONCAT(`stdFirstName`, `stdLastName`, `stdCity`, `stdNo`) LIKE '%".$valueToSearch."%'";
+    $search_result = filterTable($query);
+    
 }
+ else {
+    $query = "SELECT * FROM `student`";
+    $search_result = filterTable($query);
+}
+
+// function to connect and execute the query
+function filterTable($query)
+{
+    $connect = mysqli_connect("localhost", "root", "JDTksu2015", "university");
+    $filter_Result = mysqli_query($connect, $query);
+    return $filter_Result;
+}
+
 ?>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" >
 <head>
-<title>GRASS</title>
+<title>Capstone Test Website</title>
 <meta http-equiv="content-type" content="text/html; charset=iso-8859-1" />
 <link href="style.css" rel="stylesheet" type="text/css" />
+	<style>
+            table,tr,th,td
+            {
+                border: 1px solid black;
+            }
+        </style>
 </head>
 <body>
+	
+	<form action="php_html_table_data_filter.php" method="post">
+            <input type="text" name="valueToSearch" placeholder="Value To Search"><br><br>
+            <input type="submit" name="search" value="Filter"><br><br>
+            
+            <table>
+                <tr>
+                    <th>Student Number</th>
+                    <th>First Name</th>
+                    <th>Last Name</th>
+                    <th>City</th>
+                </tr>
+
+      <!-- populate table from mysql database -->
+                <?php while($row = mysqli_fetch_array($search_result)):?>
+                <tr>
+                    <td><?php echo $row['stdNo'];?></td>
+                    <td><?php echo $row['stdFirstName'];?></td>
+                    <td><?php echo $row['stdLastName'];?></td>
+                    <td><?php echo $row['stdCity'];?></td>
+                </tr>
+                <?php endwhile;?>
+            </table>
+        </form>
+	
+
    
 <div id="container">
   <div id="header">
@@ -50,13 +71,7 @@ $output .='<div> '.$fname.' '.$lname.'</div>';
   </div>
   <div id="title">
     <p>Grass Template</p>
-  </div>
-  
-<form>
-  <input type="text" name="search" 
-         <input type"submit" />       
-</form>
-  
+	</div>
   
   <div id="leftcol">
     <h2>Navigate</h2>
