@@ -1,5 +1,5 @@
 <?php
-mysql_connect ("3306","root","JDTksu2015") or die("could not connect"); 
+mysql_connect ("localhost:3306","root","JDTksu2015") or die("could not connect"); 
 mysql_select_db("university") or die("could not find database");
 
 $output = '';
@@ -8,7 +8,7 @@ if (isset ($_POST ['search']))   {
       $searchq = $_POST ['search'];
       $searchq = preg_replace("#[^0-9a-z]#i", "", $searchq);
 
-$query = mysql_query ("SELECT * FROM student WHERE firtname LIKE '%searchq%' OR lastname LIKE '%searchq%'") or die("Could not Search");
+$query = mysql_query ("SELECT * FROM student WHERE firstname LIKE '%searchq%' OR lastname LIKE '%searchq%'") or die("Could not Search");
 $count = mysql_num_rows ($query);
 if ($count == 0) {
       $ouput = 'There was no search result';
