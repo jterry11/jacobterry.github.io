@@ -1,9 +1,19 @@
 <?php
-$conn = new mysqli("localhost", "jacob", "JDTksu2015", "uiversity");
+
+$host="localhost";
+$port=3306;
+$socket="";
+$user="root";
+$password="";
+$dbname="university";
+
+$con = new mysqli($host, $user, $password, $dbname, $port, $socket)
+	or die ('Could not connect to the database server' . mysqli_connect_error());
+
+//$con->close();
+
   
-  if ($conn->connect_error) {
-    die("ERROR: Unable to connect: " . $conn->connect_error);
-  } 
+  
 
   echo 'Connected to the database.<br>';
 
