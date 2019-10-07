@@ -1,5 +1,11 @@
 <?php
-$mysqli = new mysqli("Mysql@localhost:3306", "root", "JDTksu2015", "university");
+$conn = new mysqli("localhost", "root", "JDTksu2015", "uiversity");
+  
+  if ($conn->connect_error) {
+    die("ERROR: Unable to connect: " . $conn->connect_error);
+  } 
+
+  echo 'Connected to the database.<br>';
 
 $output = '';
 
